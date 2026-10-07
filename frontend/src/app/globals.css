@@ -1,0 +1,210 @@
+@import"tailwindcss";
+
+:root {
+ --bg-main: #f7f4ed;
+ --bg-gradient: radial-gradient(circle at 5% 0%, #eef4e9 0%, #f8f5ee 48%, #f1f5f7 100%);
+ --panel-bg: rgba(255, 255, 255, 0.94);
+ --panel-border: #e3dbcd;
+ --panel-border-subtle: #e9e3d9;
+ --panel-shadow: 0 12px 35px -26px rgba(39, 54, 40, 0.45), 0 2px 8px -6px rgba(43, 42, 34, 0.24);
+ --text-primary: #26332d;
+ --text-secondary: #58645b;
+ --text-muted: #817e73;
+ --accent-emerald: #477b58;
+ --accent-teal: #487d7b;
+ --accent-cyan: #507bb6;
+ --accent-amber: #bb7540;
+ --card-sub-bg: #fbf9f4;
+ --font-display: "Cambria", "Georgia", "Times New Roman", serif;
+}
+
+@theme inline {
+ --font-sans: "Trebuchet MS", "Aptos", "Segoe UI", Arial, sans-serif;
+ --font-mono: "Cascadia Code", "Consolas", "Courier New", monospace;
+}
+
+:root {
+ color-scheme: light;
+}
+
+body {
+ background-color: var(--bg-main);
+ background-image: var(--bg-gradient);
+ background-attachment: fixed;
+ color: var(--text-primary);
+ font-family: var(--font-sans, "Trebuchet MS", "Aptos", "Segoe UI", Arial, sans-serif);
+ overflow-x: hidden;
+ -webkit-font-smoothing: antialiased;
+ -moz-osx-font-smoothing: grayscale;
+}
+
+code, kbd, samp, pre, .font-mono {
+ font-family:'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+}
+
+/* Light SCADA Panel Styles */
+.scada-panel {
+ background: var(--panel-bg);
+ border: 1px solid var(--panel-border);
+ box-shadow: var(--panel-shadow);
+ border-radius: 1.15rem;
+ backdrop-filter: blur(12px);
+}
+
+h1, h2, h3, .section-title {
+ font-family: var(--font-display);
+ letter-spacing: -0.025em;
+}
+
+h2.uppercase, h3.uppercase { text-transform: none; }
+
+.section-title {
+ margin-top: 0.15rem;
+ color: #293a31;
+ font-size: clamp(1.3rem, 2vw, 1.8rem);
+ font-weight: 700;
+ line-height: 1.15;
+}
+
+.eyebrow {
+ color: #64806b;
+ font-size: 0.67rem;
+ font-weight: 800;
+ letter-spacing: 0.14em;
+ text-transform: uppercase;
+}
+
+.status-pill, .source-chip {
+ display: inline-flex;
+ align-items: center;
+ gap: 0.4rem;
+ border-radius: 999px;
+ padding: 0.25rem 0.6rem;
+ font-size: 0.67rem;
+ font-weight: 700;
+ white-space: nowrap;
+}
+
+.status-pill-good { background: #e8f2e8; color: #416c4c; }
+.status-pill-warn { background: #fbefdf; color: #9a5d32; }
+.status-pill-wait { background: #edf1f4; color: #64717a; }
+.status-pill-sim { background: #edf1f7; color: #4f6d99; }
+.source-chip { border: 1px solid #e4ded3; background: #faf8f3; color: #716b60; }
+.source-chip-live { background: #edf4ec; color: #4a7051; }
+
+.history-card {
+ border: 1px solid #e8e2d8;
+ border-radius: 1rem;
+ background: linear-gradient(155deg, #fff 0%, #fbfaf7 100%);
+ padding: 1rem;
+}
+
+.project-card { border: 1px solid #e7e0d5; border-radius: 1rem; background: linear-gradient(145deg, #fff 0%, #fbf9f4 100%); padding: 1.1rem; }
+.step-number { display: grid; width: 1.9rem; height: 1.9rem; flex: 0 0 auto; place-items: center; border-radius: 50%; background: #eaf0e7; color: #477b58; font-family: var(--font-mono); font-size: 0.75rem; font-weight: 800; }
+
+.hero-card {
+ position: relative;
+ isolation: isolate;
+ overflow: hidden;
+ min-height: 230px;
+ border: 1px solid #3f6950;
+ border-radius: 1.4rem;
+ background: linear-gradient(115deg, #293e34 0%, #355843 54%, #486c59 100%);
+ padding: clamp(1.4rem, 4vw, 2.5rem);
+ box-shadow: 0 22px 48px -34px rgba(33, 56, 40, 0.9);
+}
+
+.hero-tag {
+ display: inline-flex;
+ align-items: center;
+ gap: 0.4rem;
+ border: 1px solid rgba(228, 239, 226, 0.28);
+ border-radius: 999px;
+ background: rgba(255, 255, 255, 0.1);
+ padding: 0.4rem 0.72rem;
+ color: #f1f4ed;
+ font-size: 0.7rem;
+ font-weight: 600;
+ backdrop-filter: blur(8px);
+}
+
+.hero-orbit {
+ position: absolute;
+ z-index: -1;
+ border: 1px solid rgba(225, 238, 221, 0.16);
+ border-radius: 50%;
+ pointer-events: none;
+}
+
+.hero-orbit-one { width: 430px; height: 430px; right: -135px; top: -115px; }
+.hero-orbit-two { width: 310px; height: 310px; right: -72px; top: -53px; }
+.hero-spark { position: absolute; width: 8px; height: 8px; border-radius: 50%; background: #d5b276; box-shadow: 0 0 0 7px rgba(213, 178, 118, 0.1); }
+.hero-spark-one { right: 12%; top: 26%; }
+.hero-spark-two { right: 25%; bottom: 20%; width: 5px; height: 5px; background: #a9c9ae; }
+
+.field-label { display: flex; flex-direction: column; gap: 0.42rem; color: #3c4c40; font-size: 0.82rem; font-weight: 700; }
+.field-hint { color: #8b8579; font-size: 0.65rem; font-weight: 500; }
+.field-input { width: 100%; min-height: 42px; border: 1px solid #ddd4c6; border-radius: 0.8rem; background: #fff; padding: 0.55rem 0.7rem; color: #29362f; font: inherit; font-size: 0.85rem; }
+.field-input:focus { outline: 2px solid #7e9d80; outline-offset: 2px; }
+.action-button, .quiet-button { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; border-radius: 999px; padding: 0.68rem 1rem; font-size: 0.82rem; font-weight: 700; transition: transform 150ms ease, background-color 150ms ease; }
+.action-button { border: 1px solid #3f7250; background: #477b58; color: white; }
+.action-button:hover { transform: translateY(-1px); background: #396b49; }
+.quiet-button { border: 1px solid #ded7cb; background: #fff; color: #4a5a4e; }
+.quiet-button:hover { background: #f4f1e9; }
+.action-button:disabled, .quiet-button:disabled { cursor: wait; opacity: 0.6; }
+.metric-value { margin-top: 0.15rem; font-family: var(--font-mono); font-size: 1.25rem; font-weight: 800; color: #477b58; }
+
+@media (prefers-reduced-motion: reduce) {
+ *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+.scada-subcard {
+ background: var(--card-sub-bg);
+ border: 1px solid var(--panel-border-subtle);
+ border-radius: 0.5rem;
+}
+
+/* SCADA industrial scrollbar */
+::-webkit-scrollbar {
+ width: 6px;
+ height: 6px;
+}
+::-webkit-scrollbar-track {
+ background: rgba(240, 253, 250, 0.5);
+}
+::-webkit-scrollbar-thumb {
+ background: #99f6e4;
+ border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+ background: #5eead4;
+}
+
+/* Animated power flow dashes */
+@keyframes flowForward {
+ from {
+ stroke-dashoffset: 24;
+ }
+ to {
+ stroke-dashoffset: 0;
+ }
+}
+
+@keyframes flowReverse {
+ from {
+ stroke-dashoffset: 0;
+ }
+ to {
+ stroke-dashoffset: 24;
+ }
+}
+
+.flow-anim-forward {
+ stroke-dasharray: 6 6;
+ animation: flowForward 1.2s linear infinite;
+}
+
+.flow-anim-reverse {
+ stroke-dasharray: 6 6;
+ animation: flowReverse 1.2s linear infinite;
+}
